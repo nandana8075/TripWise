@@ -1,0 +1,30 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+
+class TripDb(models.Model):
+    title=models.CharField(max_length=100)
+    start_date=models.DateField()
+    destination=models.CharField(max_length=100)
+    created_by=models.ForeignKey(User,on_delete=models.CASCADE,related_name="created_trips")
+    created_at=models.DateTimeField(auto_now=True)
+    updated_at=models.DateTimeField(auto_now=True)
+
+    def ___str__(self):
+        return self.title
+
+class TripMemberDb(models.Model):
+    trip=models.ForeignKey(TripDb, on_delete=models.CASCADE, related_name="trip_details")
+    user=models.ForeignKey(User,on_delete=models.CASCADE, related_name="trip_memebers")
+    joined_at=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['trip','user'],name='unique_trip_member')]
+        # this means combination of trip and user must be unique 
+        #it doesnt mean that trip alone or user alone must be unique
+
+
+    def str(self):
+        return f"{self.user.Username} - {self.trip.title}"
+
+

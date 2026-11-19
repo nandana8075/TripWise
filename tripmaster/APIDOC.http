@@ -1,0 +1,78 @@
+###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username":"Anjana",
+    "password":"Anju@123",
+    "email":"Anjana2012@gmail.com"
+}
+
+###
+GET http://127.0.0.1:8000/trips/
+Accept: application/json
+Authorization: Basic Archana:Archana@123
+
+###
+GET http://127.0.0.1:8000/users/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/trips/
+Content-Type: application/json
+Authorization: Basic Archana:Archana@123
+
+{
+    "title":"Temple Visit",
+    "start_date":"2026-10-10",
+    "destination":"rameshwaram"
+}
+
+###
+GET http://127.0.0.1:8000/trips/2/
+Accept: application/json
+Authorization: Basic Archana:Archana@123
+
+###
+PUT http://127.0.0.1:8000/trips/2/
+Content-Type: application/json
+Authorization: Basic Prayag:Prayag@123
+
+{
+    "title":"vacation to ooty",
+    "start_date":"2026-12-12",
+    "destination":"ooty"
+}
+
+###
+DELETE http://127.0.0.1:8000/trips/3/
+Content-Type: application/json
+Authorization: Basic Archana:Archana@123
+
+###
+POST http://127.0.0.1:8000/trips/3/members/
+Content-Type: application/json
+Authorization: Basic Archana:Archana@123
+
+{
+    "username":"Nandana"
+}
+
+###
+GET http://127.0.0.1:8000/trip/2/members/
+Accept: application/json
+Authorization: Basic Archana:Archana@123
+
+###
+POST http://127.0.0.1:8000/trip/2/members/
+Content-Type: application/json
+Authorization: Basic Archana:Archana@123
+
+{
+    "username":"Anjana"
+}
+
+###
+DELETE http://127.0.0.1:8000/trip/2/members/3/
+Content-Type: application/json
+Authorization: Basic Archana:Archana@123
